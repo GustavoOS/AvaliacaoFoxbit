@@ -3,8 +3,9 @@ import { Compass } from "../../../src/domain/entities/compass";
 import { toCoordinates } from "../../../src/domain/entities/coordinates";
 import { Rover } from "../../../src/domain/entities/rover";
 import { MoveHoversUseCase } from "../../../src/domain/useCases/moverovers";
+import { toMovement } from "../../../src/factories/movement";
 
-import { assertRover, toMovement } from "../../utils";
+import { assertRover } from "../../utils";
 
 describe("test use case", () => {
     it("sample", () => {

@@ -3,6 +3,7 @@ import { Advance } from "../../src/domain/movements/advance";
 import { Clockwise } from "../../src/domain/movements/clockwise";
 import { CounterClockwise } from "../../src/domain/movements/counterclockwise";
 import { movementFactory } from "../../src/factories/movement";
+import { InvalidCommandException } from "../../src/interface/exceptions/invalidcommand";
 
 describe("test movement command factory", () => {
     it("M should instanciate advance", () => {
@@ -20,5 +21,9 @@ describe("test movement command factory", () => {
 
     it("should be case insensitive", () => {
         expect(movementFactory("m")).toBeInstanceOf(Advance)
+    })
+
+    it("invalid char shall throw", () => {
+        expect(() => movementFactory("3")).toThrow(InvalidCommandException)
     })
 })

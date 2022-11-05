@@ -3,7 +3,8 @@ import { Compass } from "../../../src/domain/entities/compass";
 import { toCoordinates } from "../../../src/domain/entities/coordinates";
 import { Rover } from "../../../src/domain/entities/rover";
 import { Advance } from "../../../src/domain/movements/advance";
-import { assertRover, range } from "../../utils";
+import { range } from "../../../src/utils/utils";
+import { assertRover } from "../../utils";
 
 describe("test clockwise movements", () => {
     let rover: Rover
