@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { Compass } from "../../../src/domain/entities/compass";
 import { toCoordinates } from "../../../src/domain/entities/coordinates";
 import { Rover } from "../../../src/domain/entities/rover";
+import { RoverOutOfBoundariesException } from "../../../src/domain/exceptions/outofbondaries";
 import { validateBoundariesInRange } from "../../../src/domain/validators/boundaries";
 
 describe("test validations", () => {
@@ -15,11 +16,11 @@ describe("test validations", () => {
 
     it("negative x shall throw", () => {
         const rover = new Rover(Compass.West, toCoordinates(-1, 0))
-        expect(() => validateBoundariesInRange(rover, boundaries)).toThrow()
+        expect(() => validateBoundariesInRange(rover, boundaries)).toThrow(RoverOutOfBoundariesException)
     })
 
     it("negative y shall throw", () => {
         const rover = new Rover(Compass.West, toCoordinates(0, -1))
-        expect(() => validateBoundariesInRange(rover, boundaries)).toThrow()
+        expect(() => validateBoundariesInRange(rover, boundaries)).toThrow(RoverOutOfBoundariesException)
     })
 })
