@@ -15,7 +15,4 @@ const coords = [
     toCoordinates(-1, 0),
 ]
 
-export const heads = ["N", "E", "S", "W"]
-export const headings = (h: string) =>heads.indexOf(h)
-
 export const compassToCoordinates = (heading: Compass) => coords[heading]

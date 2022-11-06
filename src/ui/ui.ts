@@ -1,12 +1,10 @@
-import * as readline from 'node:readline/promises'
-import { headings, heads } from '../domain/entities/compass'
 import { toCoordinates } from '../domain/entities/coordinates'
 import { RoverStatus } from '../domain/useCases/dto/rover'
 import { handle } from '../interface/controller/controller'
 import { RoversForm } from '../interface/forms/roversform'
 import { range } from '../utils/utils'
-import promptSync from 'prompt-sync'
 import { Prompt } from 'prompt-sync'
+import { abreviatedCompass, translateAbreviatedCompass } from './compass'
 
 export class PromptCommandInterface {
     constructor(private prompt: Prompt) { }
@@ -33,7 +31,7 @@ export class PromptCommandInterface {
 
     private printOutput(status: RoverStatus[]) {
         status.forEach(s => {
-            console.log(`${s.position.x} ${s.position.y} ${heads[s.heading]}`)
+            console.log(`${s.position.x} ${s.position.y} ${abreviatedCompass[s.heading]}`)
         })
     }
 }
@@ -43,7 +41,7 @@ function readRover(prompt: Prompt) {
     const commands = prompt("")
     const result = {
         "position": toCoordinates(Number(x), Number(y)),
-        "heading": headings(heading),
+        "heading": translateAbreviatedCompass(heading),
         "commands": commands
     }
     return result

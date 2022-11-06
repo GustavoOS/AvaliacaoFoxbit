@@ -6,7 +6,7 @@
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "tsc --build --clean",
+    "build": "rm -rf build && tsc",
     "start": "node build/ui/app.js"
   },
   "keywords": [],
