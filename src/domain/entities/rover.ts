@@ -1,5 +1,5 @@
 import { Compass } from "./compass";
-import { Coordinates, toCoordinates } from "./coordinates";
+import { Coordinates } from "./coordinates";
 
 
 

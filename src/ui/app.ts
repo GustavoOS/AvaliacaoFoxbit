@@ -1,9 +1,8 @@
-import * as readline from 'node:readline/promises'
-import { stdin as input, stdout as output } from 'node:process'
 import { PromptCommandInterface } from './ui';
+import promptSync from 'prompt-sync'
 
 
-const rl = readline.createInterface({ input, output });
 
-const ui = new PromptCommandInterface(rl)
+
+const ui = new PromptCommandInterface(promptSync({sigint: true}))
 ui.execute()
